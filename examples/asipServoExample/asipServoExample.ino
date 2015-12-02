@@ -30,6 +30,9 @@ asipService services[] = {
 void setup()
 {
   Serial.begin(57600);
+  asip.begin(&Serial, asipServiceCount(services), services, "AsipIO"); 
+  asip.reserve(SERIAL_RX_PIN);  // reserve pins used by the serial port 
+  asip.reserve(SERIAL_TX_PIN);  // these defines are in asip/boards.h 
   asipIO.begin(); 
   // start the services
   asipServos.begin(NBR_SERVOS,servoPins,myServos);

@@ -45,6 +45,9 @@ void setup()
   Serial.begin(57600);
   asipIO.begin(); 
   // start the services
+  asip.begin(&Serial, asipServiceCount(services), services, "AsipIO"); 
+  asip.reserve(SERIAL_RX_PIN);  // reserve pins used by the serial port 
+  asip.reserve(SERIAL_TX_PIN);  // these defines are in asip/boards.h 
   asipDistance.begin(NBR_DISTANCE_SENSORS,distancePins); 
   asipServos.begin(NBR_SERVOS,servoPins,myServos);
   asipTone.begin(tonePin);
